@@ -1,0 +1,33 @@
+version: '3.5'
+
+services:
+
+  coworkee-cmd:
+    image: chanan/sencha
+    volumes:
+    - ./client:/var/www
+    working_dir: /var/www
+    ports:
+    - 3107:1841
+    
+  # node-cli
+  coworkee-node-cli:
+    image: node:6.9.2-alpine
+    volumes:
+    - ./server:/var/www
+    working_dir: /var/www
+    ports:
+    - 1986:3000
+
+  # # node npm watch
+  # coworke-node-watch:
+  #   image: node:13.2.0-alpine
+  #   restart: always
+  #   volumes:
+  #   - ./:/var/www
+  #   working_dir: /var/www
+  #   command: sh -c "until [ -f project.pid ] ; do sleep 1; done && npm run watch"
+
+# volumes:
+#   pm-redis:
+#   composer:
