@@ -3,30 +3,19 @@ version: '3.5'
 services:
 
   coworkee-cmd:
+    container_name: 'container_cmd'
     image: rockmagicnet/sencha-cmd:latest
     volumes:
-    - ./client:/var/www
+      - ./client:/var/www
     working_dir: /var/www
     ports:
-    - 1841:1841
-    
-  # node-cli
+      - 1841:1841
+
   coworkee-node-cli:
+    container_name: 'coworkee-node-cli'
     image: node:6.9.2-alpine
     volumes:
-    - ./server:/var/www
+      - ./server:/var/www
     working_dir: /var/www
     ports:
-    - 3000:3000
-
-  # # node npm watch
-  # coworke-node-watch:
-  #   image: node:13.2.0-alpine
-  #   restart: always
-  #   volumes:
-  #   - ./:/var/www
-  #   working_dir: /var/www
-  #   command: sh -c "until [ -f project.pid ] ; do sleep 1; done && npm run watch"
-
-# volumes:
-#   composer:
+      - 3000:3000
